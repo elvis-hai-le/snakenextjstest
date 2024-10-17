@@ -36,6 +36,7 @@ pids
 build
 
 # binaries
+/dist
 bin
 
 
