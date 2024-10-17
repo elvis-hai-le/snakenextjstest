@@ -24,7 +24,7 @@ export default function SnakeGame() {
   // Game Settings
   const minGameSpeed = 10
   const maxGameSpeed = 15
-  const wallKills = true;
+  const wallKills = true
 
   // Game State
   const [gameDelay, setGameDelay] = useState<number>(1000 / minGameSpeed)
@@ -183,49 +183,46 @@ export default function SnakeGame() {
   // Update snake.head, snake.trail and apple positions. Check for collisions.
   const updateSnake = () => {
     // Check for collision with walls
-    var nextHeadPosition = {
+    let nextHeadPosition = {
       x: snake.head.x + velocity.dx,
       y: snake.head.y + velocity.dy,
     }
     if (
-      ( 
-        nextHeadPosition.x < 0 ||
+      (nextHeadPosition.x < 0 ||
         nextHeadPosition.y < 0 ||
         nextHeadPosition.x >= canvasWidth / canvasGridSize ||
-        nextHeadPosition.y >= canvasHeight / canvasGridSize
-      ) &&
+        nextHeadPosition.y >= canvasHeight / canvasGridSize) &&
       wallKills
     ) {
       gameOver()
     }
-    if ( nextHeadPosition.x < 0 ) {
-        nextHeadPosition = {
-          x: (canvasWidth / canvasGridSize) + velocity.dx,
-          y: snake.head.y + velocity.dy, 
-        }
+    if (nextHeadPosition.x < 0) {
+      nextHeadPosition = {
+        x: canvasWidth / canvasGridSize + velocity.dx,
+        y: snake.head.y + velocity.dy,
       }
+    }
 
-    if ( nextHeadPosition.y < 0 ) {
+    if (nextHeadPosition.y < 0) {
       nextHeadPosition = {
         x: snake.head.x + velocity.dx,
-        y: (canvasHeight / canvasGridSize) + velocity.dy,
+        y: canvasHeight / canvasGridSize + velocity.dy,
       }
     }
 
-    if ( nextHeadPosition.x >= canvasWidth / canvasGridSize ) {
+    if (nextHeadPosition.x >= canvasWidth / canvasGridSize) {
       nextHeadPosition = {
         x: -1 + velocity.dx,
-        y: snake.head.y + velocity.dy, 
+        y: snake.head.y + velocity.dy,
       }
     }
 
-    if ( nextHeadPosition.y >= canvasHeight / canvasGridSize ) {
+    if (nextHeadPosition.y >= canvasHeight / canvasGridSize) {
       nextHeadPosition = {
         x: snake.head.x + velocity.dx,
         y: 0 + velocity.dx,
       }
     }
-    
 
     // Check for collision with apple
     if (nextHeadPosition.x === apple.x && nextHeadPosition.y === apple.y) {
@@ -365,8 +362,11 @@ export default function SnakeGame() {
   return (
     <>
       <Head />
-      <h1 className='title'>NextJS Snake Demo</h1>
-      <h1 className='title' id='subtitle'>CREDITS TO MARC MULLER</h1><br />
+      <h1 className="title">NextJS Snake Demo</h1>
+      <h1 className="title" id="subtitle">
+        CREDITS TO MARC MULLER
+      </h1>
+      <br />
       <main>
         <canvas
           ref={canvasRef}
