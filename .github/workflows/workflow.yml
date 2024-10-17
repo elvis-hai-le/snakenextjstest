@@ -50,14 +50,15 @@ jobs:
         uses: LIT-Protocol/artifact-exists-action@v0
         with:
           name: 'artifact'
-      - name: Download artifact
+      - name: Download artifact if exists
         if: ${{ steps.check-artifact.outputs.exists == 'true' }}
         uses: actions/download-artifact@v4
       - name: Restore cache if no artifact
         if: ${{ steps.check-artifact.outputs.exists == 'false' }}
         uses: actions/cache/restore@v4
         with:
-          path: ~/.npm
+          path: |
+            ~/.npm
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           restore-keys: |
