@@ -60,7 +60,8 @@ jobs:
           path: ~/.npm
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-      # - name: Run unit Test
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-      # - name: Run unit Test
       #   run: npm test
         # run unit tests
 
