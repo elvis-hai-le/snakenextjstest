@@ -362,7 +362,7 @@ export default function SnakeGame() {
   return (
     <>
       <Head />
-      <h1 className="title">NextJS Snake Demo</h1>
+      <h1 className="title">NextJS Snake Demo Deploy</h1>
       <h1 className="title" id="subtitle">
         CREDITS TO MARC MULLER
       </h1>
